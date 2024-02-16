@@ -1,7 +1,7 @@
 # Svelte Time Tracker App
 
 Visit the demo at [svelte-time-tracker-app.web.app](https://svelte-time-tracker-app.web.app/).
-Go ahead and create an account to gain access to all functionalities.
+Go ahead and create an account to gain access to all functionalities (a fake email may be used, don't worry).
 
 ## Dependencies
 
