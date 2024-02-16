@@ -52,7 +52,7 @@ Install [firebase-tools](https://firebase.google.com/docs/cli?hl=en) if you have
 npm install -g firebase-tools
 ```
 
-Then, from within the project folder, log in to Firebase with your Google credentials, set the project and int it:
+Then, from within the project folder, log in to Firebase with your Google credentials and set the project:
 
 ```bash
 firebase login
