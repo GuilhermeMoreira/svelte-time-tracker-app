@@ -1,0 +1,208 @@
+.content-height-table-top-button {
+  .dt-search {
+    top: -146px !important;
+  }
+}
+.datatable {
+  height: 100% !important;
+  // Fix larguras quebrando ao repopular a lista
+  thead,
+  tbody {
+    &.case_1 {
+      th, td {
+        // &:first-of-type {
+        //   width: 60px !important;
+        //   min-width: 60px !important;
+        //   max-width: 60px !important;
+        // }
+        // &:nth-of-type(2) {
+        &:first-of-type {
+          width: 220px !important;
+          min-width: 220px !important;
+          max-width: 220px !important;
+        }
+        // &:nth-of-type(3) {
+        &:nth-of-type(2) {
+          width: 190px !important;
+          min-width: 190px !important;
+          max-width: 190px !important;
+        }
+        // &:last-of-type {
+        //   width: 100px !important;
+        //   min-width: 100px !important;
+        //   max-width: 100px !important;
+        // }
+      }
+    }
+  }
+  background: transparent !important;
+  position: unset !important;
+  .dt-search {
+    position: absolute;
+    top: -88px;
+    right: 0;
+    input {
+      background-color: var(--color_10);
+      color: var(--color_3);
+      border: none;
+      border-radius: 6px;
+      padding: 15px;
+      width: 200px;
+      font-size: 14px;
+      &:focus {
+        border: none;
+      }
+    }
+  }
+  .dt-table {
+    overflow-x: hidden !important;
+    border-bottom: none !important;
+  }
+  .dt-header {
+    background: var(--color_7) !important;
+    padding: 0 !important;
+    border-bottom: 1px solid var(--color_8-light);
+  }
+  thead {
+    background: var(--color_7);
+  }
+  th {
+    background: transparent !important;
+    border: none !important;
+    padding: 9px 18px !important;
+    color: var(--color_2);
+    text-align: left !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .no-click {
+    td {
+      cursor: default;
+    }
+  }
+  td {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    padding: 12px 18px !important;
+    font-size: 14px !important;
+    &:first-of-type {
+      border-radius: 3px 0 0 3px;
+    }
+    &:last-of-type {
+      border-radius: 0 3px 3px 0;
+    }
+    a {
+      color: var(--color_1);
+    }
+  }
+  tr {
+    .icon {
+      background-color: var(--color_6);
+      color: var(--color_4);
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      line-height: 30px;
+      border-radius: 50%;
+      margin-left: 9px;
+      font-family: "Poppins";
+      font-size: 14px;
+    }
+    &:nth-of-type(odd) {
+      td {
+        background-color: var(--color_9) !important;
+        color: var(--color_17);
+        a {
+          color: var(--color_17);
+          &:hover {
+            color: var(--color_29) !important;
+          }
+        }
+      }
+    }
+  }
+  .sortable {
+    text-align: left !important;
+    span {
+      &:before {
+        border-bottom-color: var(--color_34) !important;
+      }
+      &:after {
+        border-top-color: var(--color_34) !important;
+      }
+    }
+    &.asc {
+      span {
+        &:after {
+          border-top-color: var(--color_2) !important;
+        }
+      }
+    }
+    &.desc {
+      span {
+        &:before {
+          border-bottom-color: var(--color_2) !important;
+        }
+      }
+    }
+  }
+  .dt-pagination {
+    padding-top: 12px !important;
+    background: transparent !important;
+    .dt-pagination-rowcount {
+      margin-left: 0 !important;
+      color: var(--color_2) !important;
+    }
+    .dt-pagination-buttons {
+      margin-right: 0 !important;
+    }
+    button {
+      text-align: center !important;
+      border: 1px solid var(--color_35) !important;
+      cursor: pointer !important;
+      color: var(--color_36) !important;
+      &.disabled {
+        opacity: .4 !important;
+        cursor: default !important;
+        &:not(.active):hover {
+          background-color: transparent !important;
+        }
+      }
+      &.active {
+        background: var(--color_35) !important;
+      }
+      &:not(.active):hover {
+        background: var(--color_35) !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mediaQueryMid) {
+  .content-height-table-top-button {
+    .dt-search {
+      top: -219px !important;
+    }
+  }
+  .datatable {
+    .dt-table {
+      overflow-x: auto !important;
+    }
+    td {
+      padding: 12px 9px !important;
+      padding-right: 15px !important;
+      font-size: 16px !important;
+    }
+    .dt-search {
+      top: -161px;
+      right: 50px;
+      input {
+        padding: 21px;
+        width: 230px;
+      }
+    }
+  }
+}

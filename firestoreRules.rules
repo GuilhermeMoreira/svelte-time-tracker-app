@@ -1,0 +1,56 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+  	// User Settings
+    match /settings/{user_uid} {
+    	allow read:
+      	if request.auth != null && 'user_'+request.auth.uid == user_uid
+      allow create, update:
+      	if request.auth != null && 'user_'+request.auth.uid == user_uid &&
+        	request.resource.data.keys().hasOnly(['name', 'theme']) &&
+        	(request.resource.data.theme == 'dark' || request.resource.data.theme == 'light')
+		}
+    // Clients
+    match /clients/{user_uid} {
+			match /{items_uid}/{cid} {
+      	allow read, delete:
+          if request.auth != null && 'items_'+request.auth.uid == items_uid &&
+          	'user_'+request.auth.uid == user_uid
+        allow create, update:
+          if request.auth != null && 'items_'+request.auth.uid == items_uid &&
+          	'user_'+request.auth.uid == user_uid &&
+          	request.resource.data.keys().hasOnly(['description', 'created_date', 'updated_date'])
+      }
+    }
+    // Projects
+    match /projects/{user_uid} {
+			match /{items_uid}/{pid} {
+        function checkClient() {
+          return exists(/databases/$(database)/documents/clients/$('user_'+request.auth.uid)/$('items_'+request.auth.uid)/$(request.resource.data.cid))
+        }
+      	allow read, delete:
+          if request.auth != null && 'items_'+request.auth.uid == items_uid &&
+          	'user_'+request.auth.uid == user_uid
+        allow create, update:
+          if request.auth != null && 'items_'+request.auth.uid == items_uid &&
+          	'user_'+request.auth.uid == user_uid &&
+          	request.resource.data.keys().hasOnly(['cid', 'description', 'created_date', 'updated_date']) &&
+            checkClient()
+      }
+    }
+    // Tracked time
+    match /tracked_time/{user_uid} {
+			match /{items_uid}/{tid} {
+      	function checkProject() {
+          return exists(/databases/$(database)/documents/projects/$('user_'+request.auth.uid)/$('items_'+request.auth.uid)/$(request.resource.data.pid))
+        }
+      	allow read, delete:
+          if request.auth != null && 'items_'+request.auth.uid == items_uid &&
+          	'user_'+request.auth.uid == user_uid
+        allow create, update:
+          if request.auth != null && 'items_'+request.auth.uid == items_uid &&
+          	'user_'+request.auth.uid == user_uid &&
+          	request.resource.data.keys().hasOnly(['tracked_time', 'pid', 'description', 'created_date', 'updated_date'])
+      }
+    }
+  }
+}

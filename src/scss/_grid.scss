@@ -1,0 +1,95 @@
+@mixin block($screenSize, $blockWidth) {
+  $blockText: $blockWidth;
+  @if $blockWidth == 33.3333 {
+    $blockText: 33;
+  } @else if $blockWidth == 66.6666 {
+    $blockText: 66;
+  }
+  &.#{$screenSize}_#{$blockText} {
+    width: $blockWidth + unquote("%");
+    &.clear_left {
+      margin-left: 100 - $blockWidth + unquote("%");
+    }
+    &.clear_right {
+      margin-right: 100 - $blockWidth + unquote("%");
+    }
+    &.clear_both {
+      margin: 0 calc((100 - $blockWidth) / 2) + unquote("%");
+    }
+  }
+}
+
+@mixin blockSizes($screenSize) {
+  @include block($screenSize, 10);
+  @include block($screenSize, 20);
+  @include block($screenSize, 25);
+  @include block($screenSize, 30);
+  @include block($screenSize, 33.3333);
+  @include block($screenSize, 40);
+  @include block($screenSize, 45);
+  @include block($screenSize, 50);
+  @include block($screenSize, 55);
+  @include block($screenSize, 60);
+  @include block($screenSize, 66.6666);
+  @include block($screenSize, 70);
+  @include block($screenSize, 75);
+  @include block($screenSize, 80);
+  @include block($screenSize, 90);
+  @include block($screenSize, 100);
+}
+
+@mixin blockSpacing($size) {
+  &.spacing_#{$size} {
+    padding-right: #{$size}px;
+    .block {
+      padding: #{$size}px;
+      padding-bottom: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  &._full {
+    max-width: none;
+  }
+  @include blockSpacing(6);
+  @include blockSpacing(12);
+  @include blockSpacing(18);
+  @include blockSpacing(24);
+  @include blockSpacing(36);
+  .block {
+    @include blockSizes(l);
+    &.l_100 {
+      flex-shrink: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+@media screen and (max-width: $mediaQueryMid) {
+  .container {
+    .block {
+      @include blockSizes(m);
+      &.m_100 {
+        flex-shrink: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mediaQuerySmall) {
+  .container {
+    .block {
+      @include blockSizes(s);
+      &.s_100 {
+        flex-shrink: 0;
+        padding-right: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,166 @@
+* {
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px var(--color_10) inset !important;
+  box-shadow: 0 0 0 30px var(--color_10) inset !important;
+}
+
+input:-webkit-autofill{
+  -webkit-text-fill-color: var(--color_3) !important;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--color_1);
+  font-size: 16px;
+  transition: opacity .1s;
+}
+
+ion-icon {
+  pointer-events: none;
+}
+
+h1 {
+  font-family: 'Poppins';
+  font-size: 24px;
+  font-weight: 600;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--color_2);
+}
+
+.subtitle {
+  font-family: 'Poppins';
+  font-size: 14px;
+  color: var(--color_2);
+}
+
+.breadcrumb {
+  margin-left: -18px;
+  font-family: 'Poppins';
+  font-size: 14px;
+  color: var(--color_2);
+  ion-icon {
+    width: 15px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+a, .link {
+  color: var(--color_2);
+  text-decoration: underline;
+  transition: color .1s;
+  cursor: pointer;
+  &:hover {
+    color: var(--color_30) !important;
+  }
+}
+
+p {
+  margin: 24px 0;
+  &:first-of-type {
+    margin-top: 0;
+  }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+strong {
+  font-weight: 600;
+}
+
+.outter-container {
+  display: flex;
+  min-height: 100vh;
+  max-height: 100vh;
+  margin: auto;
+  background-color: var(--color_7);
+}
+
+.main-content {
+  width: calc(100% - 60px - 200px);
+  padding: 0 32px;
+  position: relative;
+  margin: 0 auto;
+  max-width: 1024px;
+}
+
+.main-logo {
+  height: 30px;
+}
+
+.chart-box {
+  padding-top: 12px;
+  padding-bottom: 9px;
+  padding-right: 27px;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+.content-height-text {
+  height: calc(100vh - 136px) !important;
+}
+
+.content-height-table {
+  height: calc(100vh - 120px) !important;
+}
+
+.content-height-table-top-button {
+  height: calc(100vh - 176px) !important;
+}
+
+@media screen and (max-width: $mediaQueryMid) {
+  body {
+    padding: 0;
+    background: var(--color_7);
+    font-size: 17px;
+  }
+  h1 {
+    font-size: 26px;
+  }
+  label {
+    font-size: 16px;
+  }
+  .content-height-text {
+    height: calc(100vh - 316px) !important;
+  }
+  .content-height-table {
+    height: calc(100vh - 288px) !important;
+  }
+  .content-height-table-top-button {
+    height: calc(100vh - 316px) !important;
+  }
+  .subtitle {
+    font-size: 15px;
+  }
+  .outter-container {
+    min-height: calc(100vh - 200px);
+    max-height: unset;
+    height: auto;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .main-content {
+    width: 100%;
+    border-radius: 0;
+    padding: 0;
+  }
+  .main-logo {
+    height: 30px;
+  }
+}
